@@ -14,7 +14,7 @@ security for production use.
 ## Build and Test from the Command Line
 
 The `default` preset uses CMake's default generator for the current platform.
-From the repository root, configure, build, and run the smoke test with:
+From the repository root, configure, build, and run the test suite with:
 
 ```sh
 cmake --preset default
@@ -26,13 +26,13 @@ The example executable is written under `build/default/secure-c/`.
 
 On Windows, the `windows-msvc` preset uses the Visual Studio 2022 x64
 generator. From PowerShell with the Visual Studio C++ build tools installed,
-configure, build, test, and run the application with:
+configure, build, test, and run the safe-integer example with:
 
 ```powershell
 cmake --preset windows-msvc
 cmake --build --preset windows-msvc
 ctest --preset windows-msvc
-.\build\windows-msvc\secure-c\Debug\embedded_security.exe
+.\build\windows-msvc\secure-c\Debug\safe_integer_demo.exe
 ```
 
 ## Use Visual Studio Code
@@ -45,7 +45,7 @@ and then open the Command Palette with `Ctrl+Shift+P`:
 1. **CMake: Select Configure Preset**, then select `default`.
 2. **CMake: Configure**.
 3. **CMake: Build**.
-4. In the CMake Tools sidebar, select `embedded_security` under **Launch**.
+4. In the CMake Tools sidebar, select `safe_integer_demo` under **Launch**.
 5. Run **CMake: Run Without Debugging** to launch the program in the
 	integrated terminal.
 
@@ -55,7 +55,7 @@ using the commands in the previous section without installing the extension.
 
 ## Project Layout
 
-- `secure-c/`: Secure C application and source directory
+- `secure-c/`: Secure C example driver, algorithm sources, tests, and guide
 - `CMakeLists.txt`: project-wide C11 settings, warnings, and topic inclusion
 - `CMakePresets.json`: repeatable command-line and VS Code configurations
 

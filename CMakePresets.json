@@ -7,6 +7,14 @@
       "binaryDir": "${sourceDir}/build/default"
     },
     {
+      "name": "debug",
+      "displayName": "Debug build",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
       "name": "windows-msvc",
       "displayName": "Visual Studio 2022 x64",
       "generator": "Visual Studio 17 2022",
@@ -25,6 +33,11 @@
       "configurePreset": "default"
     },
     {
+      "name": "debug",
+      "configurePreset": "debug",
+      "configuration": "Debug"
+    },
+    {
       "name": "windows-msvc",
       "configurePreset": "windows-msvc",
       "configuration": "Debug"
@@ -34,6 +47,14 @@
     {
       "name": "default",
       "configurePreset": "default",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "configuration": "Debug",
       "output": {
         "outputOnFailure": true
       }
