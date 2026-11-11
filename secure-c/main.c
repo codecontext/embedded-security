@@ -3,8 +3,9 @@
 /**
  * @brief Start the embedded security learning application.
  *
- * This minimal entry point verifies that the project can be built and run
- * before individual learning exercises are added.
+ * @details
+ * This minimal entry point demonstrates that the reorganized Secure C target
+ * can be built and run independently of later topic implementations.
  *
  * @return 0 when the application starts and exits successfully.
  */

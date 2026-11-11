@@ -22,19 +22,17 @@ cmake --build --preset default
 ctest --preset default
 ```
 
-The executable is written under `build/default/`. CMake chooses the platform's
-normal executable name, such as `embedded_security` or
-`embedded_security.exe`.
+The example executable is written under `build/default/secure-c/`.
 
 On Windows, the `windows-msvc` preset uses the Visual Studio 2022 x64
 generator. From PowerShell with the Visual Studio C++ build tools installed,
-configure, build, test, and run the executable with:
+configure, build, test, and run the application with:
 
 ```powershell
 cmake --preset windows-msvc
 cmake --build --preset windows-msvc
 ctest --preset windows-msvc
-.\build\windows-msvc\Debug\embedded_security.exe
+.\build\windows-msvc\secure-c\Debug\embedded_security.exe
 ```
 
 ## Use Visual Studio Code
@@ -57,8 +55,8 @@ using the commands in the previous section without installing the extension.
 
 ## Project Layout
 
-- `src/`: the runnable project entry point
-- `CMakeLists.txt`: C11 target, compiler warnings, and CTest registration
+- `secure-c/`: Secure C application and source directory
+- `CMakeLists.txt`: project-wide C11 settings, warnings, and topic inclusion
 - `CMakePresets.json`: repeatable command-line and VS Code configurations
 
 Each later learning step should add one focused implementation and relevant
