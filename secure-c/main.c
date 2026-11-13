@@ -1,7 +1,9 @@
+#include "safe_copy.h"
 #include "safe_integer.h"
 
 #include <inttypes.h>
 #include <stdio.h>
+#include <string.h>
 
 /**
  * @brief Demonstrate parsing a decimal value with the safe integer API.
@@ -30,6 +32,26 @@ static int run_safe_integer_demo(void)
 }
 
 /**
+ * @brief Demonstrate a bounded copy into a fixed-size destination buffer.
+ *
+ * @return 0 when the copy succeeds; nonzero if the destination is too small.
+ */
+static int run_safe_copy_demo(void)
+{
+    char destination[16] = {0};
+    safe_copy_result_t result =
+        safe_copy(destination, sizeof(destination), "bounded copy");
+
+    if (result != SAFE_COPY_OK) {
+        fputs("Could not copy the example string safely.\n", stderr);
+        return 1;
+    }
+
+    printf("Copied value: %s\n", destination);
+    return 0;
+}
+
+/**
  * @brief Dispatch the Secure C learning demonstrations.
  *
  * @details
@@ -38,7 +60,11 @@ static int run_safe_integer_demo(void)
  *
  * @return The status returned by the selected demonstration.
  */
-int main(void)
+int main(int argc, char *argv[])
 {
+    if (argc > 1 && strcmp(argv[1], "safe_copy") == 0) {
+        return run_safe_copy_demo();
+    }
+
     return run_safe_integer_demo();
 }
