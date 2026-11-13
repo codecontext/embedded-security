@@ -19,3 +19,4 @@ endif()
 include(CTest)
 
 add_subdirectory(secure-c)
+add_subdirectory(cryptography)

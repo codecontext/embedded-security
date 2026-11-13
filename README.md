@@ -55,7 +55,8 @@ using the commands in the previous section without installing the extension.
 
 ## Project Layout
 
-- `secure-c/`: Secure C example driver, algorithm sources, tests, and guide
+- `secure-c/`: Secure C examples, tests, and guides
+- `cryptography/`: introductory cryptography examples and exercises
 - `CMakeLists.txt`: project-wide C11 settings, warnings, and topic inclusion
 - `CMakePresets.json`: repeatable command-line and VS Code configurations
 
