@@ -4,7 +4,7 @@ This topic explores small, educational cryptographic building blocks in a way
 that is easy to read and test. Each lesson stays focused on one idea so the
 implementation and the reasoning remain easy to follow.
 
-## Current Lesson
+## Lessons
 
 - `xor_cipher`: apply a repeating keystream with XOR to transform a message and
   recover it with the same key.
