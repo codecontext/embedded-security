@@ -24,9 +24,8 @@ typedef enum caesar_result {
  * normalized modulo 26 to keep the mapping simple and predictable.
  * @return CAESAR_OK when the buffer is transformed; otherwise a failure code.
  */
-caesar_result_t caesar_rotate(
-    char *text,
-    size_t text_size,
-    int shift);
+caesar_result_t caesar_rotate(char *text,
+                              size_t text_size,
+                              int shift);
 
 #endif

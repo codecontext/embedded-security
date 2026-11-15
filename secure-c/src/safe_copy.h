@@ -24,9 +24,8 @@ typedef enum safe_copy_result {
  * @return SAFE_COPY_OK when the copy fits; otherwise a failure code.
  * @note The destination remains unchanged when the copy does not fit.
  */
-safe_copy_result_t safe_copy(
-    char *destination,
-    size_t destination_size,
-    const char *source);
+safe_copy_result_t safe_copy(char *destination,
+                             size_t destination_size,
+                             const char *source);
 
 #endif

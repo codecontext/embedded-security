@@ -3,11 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-static int check_rotation(
-    const char *label,
-    const char *input,
-    int shift,
-    const char *expected)
+static int check_rotation(const char *label,
+                          const char *input,
+                          int shift,
+                          const char *expected)
 {
     char buffer[128] = {0};
     int result;
@@ -21,7 +20,11 @@ static int check_rotation(
     }
 
     if (strcmp(buffer, expected) != 0) {
-        fprintf(stderr, "%s: expected '%s' but got '%s'\n", label, expected, buffer);
+        fprintf(stderr,
+                "%s: expected '%s' but got '%s'\n",
+                label,
+                expected,
+                buffer);
         return 1;
     }
 

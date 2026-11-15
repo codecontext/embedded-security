@@ -24,8 +24,7 @@ typedef enum safe_integer_parse_result {
  * @return A status from safe_integer_parse_result_t.
  * @note Bound untrusted input and ensure it is NUL-terminated before calling.
  */
-safe_integer_parse_result_t parse_int32_decimal(
-    const char *text,
-    int32_t *value);
+safe_integer_parse_result_t parse_int32_decimal(const char *text,
+                                                int32_t *value);
 
 #endif

@@ -55,10 +55,9 @@ static int rotate_letter(char letter, int shift)
     return base + offset;
 }
 
-caesar_result_t caesar_rotate(
-    char *text,
-    size_t text_size,
-    int shift)
+caesar_result_t caesar_rotate(char *text,
+                              size_t text_size,
+                              int shift)
 {
     size_t i;
     size_t normalized_shift;
@@ -67,7 +66,7 @@ caesar_result_t caesar_rotate(
         return CAESAR_INVALID_ARGUMENT;
     }
 
-    // Normalize the shift to a value in the range [0, 25] to simplify the mapping.
+    // Normalize the shift to [0, 25] to simplify the mapping.
     normalized_shift = (size_t)((shift % 26 + 26) % 26);
 
     for (i = 0U; i < text_size; ++i) {

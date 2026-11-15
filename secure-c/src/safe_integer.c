@@ -21,9 +21,8 @@
 #include <inttypes.h>
 #include <stdlib.h>
 
-safe_integer_parse_result_t parse_int32_decimal(
-    const char *text,
-    int32_t *value)
+safe_integer_parse_result_t parse_int32_decimal(const char *text,
+                                                int32_t *value)
 {
     const char *digit = text;
     char *end = NULL;

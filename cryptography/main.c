@@ -13,26 +13,26 @@ static int run_xor_cipher_demo(void)
     uint8_t decrypted[sizeof(plaintext)] = {0};
     xor_result_t result;
 
-    result = xor_encrypt(
-        encrypted,
-        sizeof(encrypted),
-        (const uint8_t *)plaintext,
-        strlen(plaintext),
-        (const uint8_t *)key,
-        strlen(key));
+    // Encrypt the example message with the key.
+    result = xor_encrypt(encrypted,
+                         sizeof(encrypted),
+                         (const uint8_t *)plaintext,
+                         strlen(plaintext),
+                         (const uint8_t *)key,
+                         strlen(key));
 
     if (result != XOR_OK) {
         fputs("Could not encrypt the example message.\n", stderr);
         return 1;
     }
 
-    result = xor_encrypt(
-        decrypted,
-        sizeof(decrypted),
-        encrypted,
-        strlen(plaintext),
-        (const uint8_t *)key,
-        strlen(key));
+    // Decrypt the message with the same key.
+    result = xor_encrypt(decrypted,
+                         sizeof(decrypted),
+                         encrypted,
+                         strlen(plaintext),
+                         (const uint8_t *)key,
+                         strlen(key));
 
     if (result != XOR_OK) {
         fputs("Could not decrypt the example message.\n", stderr);
@@ -62,7 +62,7 @@ static int run_caesar_cipher_demo(void)
 int main(int argc, char *argv[])
 {
     if (argc == 1 || strcmp(argv[1], "xor") == 0) {
-    return run_xor_cipher_demo();
+        return run_xor_cipher_demo();
     }
 
     if (argc == 2 && strcmp(argv[1], "caesar") == 0) {

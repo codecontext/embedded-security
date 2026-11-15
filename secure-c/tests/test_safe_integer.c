@@ -15,10 +15,9 @@
  * @param[in] expected_value Expected value when parsing succeeds.
  * @return 0 when the case passes; 1 when an expectation fails.
  */
-static int check_parse_case(
-    const char *text,
-    safe_integer_parse_result_t expected_result,
-    int32_t expected_value)
+static int check_parse_case(const char *text,
+                            safe_integer_parse_result_t expected_result,
+                            int32_t expected_value)
 {
     const int32_t initial_value = INT32_C(77);
     int32_t value = initial_value;
@@ -75,42 +74,61 @@ int main(void)
 {
     int failures = 0;
 
-    failures += check_parse_case(
-        "0", SAFE_INTEGER_PARSE_OK, INT32_C(0));
-    failures += check_parse_case(
-        "+17", SAFE_INTEGER_PARSE_OK, INT32_C(17));
-    failures += check_parse_case(
-        "-17", SAFE_INTEGER_PARSE_OK, INT32_C(-17));
-    failures += check_parse_case(
-        "2147483647", SAFE_INTEGER_PARSE_OK, INT32_MAX);
-    failures += check_parse_case(
-        "-2147483648", SAFE_INTEGER_PARSE_OK, INT32_MIN);
+    failures += check_parse_case("0", SAFE_INTEGER_PARSE_OK, INT32_C(0));
+    failures += check_parse_case("+17", SAFE_INTEGER_PARSE_OK, INT32_C(17));
+    failures += check_parse_case("-17", SAFE_INTEGER_PARSE_OK, INT32_C(-17));
+    
+    failures += check_parse_case("2147483647",
+                                 SAFE_INTEGER_PARSE_OK,
+                                 INT32_MAX);
 
-    failures += check_parse_case(
-        "2147483648", SAFE_INTEGER_PARSE_OUT_OF_RANGE, INT32_C(0));
-    failures += check_parse_case(
-        "-2147483649", SAFE_INTEGER_PARSE_OUT_OF_RANGE, INT32_C(0));
-    failures += check_parse_case(
-        "999999999999999999999999999999999999999999",
-        SAFE_INTEGER_PARSE_OUT_OF_RANGE,
-        INT32_C(0));
+    failures += check_parse_case("-2147483648",
+                                 SAFE_INTEGER_PARSE_OK,
+                                 INT32_MIN);
 
-    failures += check_parse_case(
-        NULL, SAFE_INTEGER_PARSE_INVALID_ARGUMENT, INT32_C(0));
-    failures += check_parse_case(
-        "", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
-    failures += check_parse_case(
-        "+", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
-    failures += check_parse_case(
-        "-", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
-    failures += check_parse_case(
-        " 12", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
-    failures += check_parse_case(
-        "12 ", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
-    failures += check_parse_case(
-        "12x", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
-    failures += check_parse_case(
-        "0x10", SAFE_INTEGER_PARSE_INVALID_FORMAT, INT32_C(0));
+    failures += check_parse_case("2147483648",
+                                 SAFE_INTEGER_PARSE_OUT_OF_RANGE,
+                                 INT32_C(0));
+
+    failures += check_parse_case("-2147483649",
+                                 SAFE_INTEGER_PARSE_OUT_OF_RANGE,
+                                 INT32_C(0));
+
+    failures += check_parse_case("999999999999999999999999999999999999999999",
+                                 SAFE_INTEGER_PARSE_OUT_OF_RANGE,
+                                 INT32_C(0));
+
+    failures += check_parse_case(NULL,
+                                 SAFE_INTEGER_PARSE_INVALID_ARGUMENT,
+                                 INT32_C(0));
+
+    failures += check_parse_case("",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
+
+    failures += check_parse_case("+",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
+
+    failures += check_parse_case("-",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
+
+    failures += check_parse_case(" 12",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
+
+    failures += check_parse_case("12 ",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
+
+    failures += check_parse_case("12x",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
+
+    failures += check_parse_case("0x10",
+                                 SAFE_INTEGER_PARSE_INVALID_FORMAT,
+                                 INT32_C(0));
 
     failures += check_null_output();
 

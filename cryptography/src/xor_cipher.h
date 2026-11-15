@@ -29,12 +29,11 @@ typedef enum xor_result {
  * @note XOR with the same keystream is its own inverse, so this helper can be
  * used for both encryption and decryption.
  */
-xor_result_t xor_encrypt(
-    uint8_t *output,
-    size_t output_size,
-    const uint8_t *input,
-    size_t input_length,
-    const uint8_t *key,
-    size_t key_length);
+xor_result_t xor_encrypt(uint8_t *output,
+                         size_t output_size,
+                         const uint8_t *input,
+                         size_t input_length,
+                         const uint8_t *key,
+                         size_t key_length);
 
 #endif
