@@ -1,4 +1,5 @@
 #include "xor_cipher.h"
+#include "caesar_cipher.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -43,7 +44,31 @@ static int run_xor_cipher_demo(void)
     return 0;
 }
 
-int main(void)
+static int run_caesar_cipher_demo(void)
 {
+    char message[] = "Hello, World!";
+    caesar_result_t result =
+        caesar_rotate(message, sizeof(message), 3);
+
+    if (result != CAESAR_OK) {
+        fputs("Could not rotate the message.\n", stderr);
+        return 1;
+    }
+
+    printf("Rotated: %s\n", message);
+    return 0;
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc == 1 || strcmp(argv[1], "xor") == 0) {
     return run_xor_cipher_demo();
+    }
+
+    if (argc == 2 && strcmp(argv[1], "caesar") == 0) {
+        return run_caesar_cipher_demo();
+    }
+
+    fputs("Usage: cryptography_demo [xor|caesar]\n", stderr);
+    return 2;
 }

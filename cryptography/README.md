@@ -8,12 +8,14 @@ implementation and the reasoning remain easy to follow.
 
 - `xor_cipher`: apply a repeating keystream with XOR to transform a message and
   recover it with the same key.
+- `caesar_cipher`: rotate alphabetic characters by a fixed shift while
+  preserving letter case and leaving punctuation unchanged.
 
 ## Project Layout
 
-- `main.c`: demo entry point for the lesson
-- `src/`: header and source for the cryptographic primitive
-- `tests/`: focused regression tests
+- `main.c`: shared demo entry point for the lessons
+- `src/`: headers and implementations for each primitive
+- `tests/`: focused regression tests for each primitive
 - `CMakeLists.txt`: build targets and test registration
 
 ## Build and Test
