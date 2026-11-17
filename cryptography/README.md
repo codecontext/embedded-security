@@ -10,6 +10,7 @@ implementation and the reasoning remain easy to follow.
   recover it with the same key.
 - `caesar_cipher`: rotate alphabetic characters by a fixed shift while
   preserving letter case and leaving punctuation unchanged.
+- `sha256_digest`: compute a fixed-size message digest through OpenSSL EVP.
 
 ## Project Layout
 
@@ -17,6 +18,17 @@ implementation and the reasoning remain easy to follow.
 - `src/`: headers and implementations for each primitive
 - `tests/`: focused regression tests for each primitive
 - `CMakeLists.txt`: build targets and test registration
+
+The cryptography lessons require the OpenSSL Crypto development library.
+
+To check whether the development files are available on your system, run:
+
+```sh
+pkg-config --exists openssl && echo "OpenSSL development files are present"
+```
+
+If this prints a message, the library is available. If it fails, install the
+OpenSSL development package for your OS before building the project.
 
 ## Build and Test
 

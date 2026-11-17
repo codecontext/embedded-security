@@ -1,5 +1,6 @@
 #include "xor_cipher.h"
 #include "caesar_cipher.h"
+#include "sha256_digest.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -59,6 +60,27 @@ static int run_caesar_cipher_demo(void)
     return 0;
 }
 
+static int run_sha256_demo(void)
+{
+    const uint8_t message[] = "abc";
+    uint8_t digest[SHA256_DIGEST_SIZE];
+    sha256_result_t result =
+        sha256_digest(message, sizeof(message) - 1U, digest, sizeof(digest));
+    size_t i;
+
+    if (result != SHA256_OK) {
+        fputs("Could not compute the SHA-256 digest.\n", stderr);
+        return 1;
+    }
+
+    printf("SHA-256: ");
+    for (i = 0U; i < sizeof(digest); ++i) {
+        printf("%02x", (unsigned int)digest[i]);
+    }
+    putchar('\n');
+    return 0;
+}
+
 int main(int argc, char *argv[])
 {
     if (argc == 1 || strcmp(argv[1], "xor") == 0) {
@@ -69,6 +91,10 @@ int main(int argc, char *argv[])
         return run_caesar_cipher_demo();
     }
 
-    fputs("Usage: cryptography_demo [xor|caesar]\n", stderr);
+    if (argc == 2 && strcmp(argv[1], "sha256") == 0) {
+        return run_sha256_demo();
+    }
+
+    fputs("Usage: cryptography_demo [xor|caesar|sha256]\n", stderr);
     return 2;
 }

@@ -9,6 +9,7 @@ security for production use.
 
 - CMake 3.21 or newer
 - A C11 compiler
+- OpenSSL Crypto development library for cryptography lessons
 - Visual Studio Code with the CMake Tools extension
 
 ## Build and Test from the Command Line
